@@ -1,0 +1,24 @@
+// schema.prisma
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id              Int     @id @default(autoincrement())
+  Name            String
+  Email           String  @unique
+  SavingsBalance  Float
+  CheckingBalance Float
+}
+
+model Admin {
+  id       Int    @id @default(autoincrement())
+  Username String @unique
+  Password String
+}
