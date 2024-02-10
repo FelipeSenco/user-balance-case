@@ -13,7 +13,7 @@ const LoginPage: FC = () => {
     e.preventDefault();
     try {
       await login({ username, password });
-      router.push("/");
+      router.back();
     } catch (e) {
       setError(e);
     }
