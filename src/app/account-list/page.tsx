@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
 
 const AccountListPage: FC = async () => {
-  if (!cookies().get("token")) {
+  if (cookies().get("token")?.value !== process.env.MOCK_TOKEN) {
     redirect("login");
   }
 

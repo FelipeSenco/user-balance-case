@@ -18,5 +18,5 @@ export function validateSessionToken(req: NextApiRequest) {
     .split(";")
     .find((c) => c.trim().startsWith("token="));
 
-  return sessionToken && sessionToken.split("=")[1] === "mockSessionToken";
+  return sessionToken && sessionToken.split("=")[1] === process.env.MOCK_TOKEN;
 }

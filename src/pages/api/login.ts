@@ -6,7 +6,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
   const { username, password } = req.body;
 
   if (username === "admin" && password === "123") {
-    const mockToken = "mockSessionToken";
+    const mockToken = process.env.MOCK_TOKEN;
 
     const serialized = serialize("token", mockToken, {
       httpOnly: true,
