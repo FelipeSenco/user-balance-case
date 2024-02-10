@@ -1,12 +1,12 @@
-import { FC } from "react";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+import AccountDetails from "../AccountDetails";
 
-const AccountDetails = ({ params }: { params: { id: number } }) => {
+const AccountDetailsPage = ({ params }: { params: { id: number } }) => {
   if (!cookies().get("token")) {
     redirect("login");
   }
-  return <div>{params.id}</div>;
+  return <AccountDetails userId={params.id} />;
 };
 
-export default AccountDetails;
+export default AccountDetailsPage;

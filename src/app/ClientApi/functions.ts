@@ -22,3 +22,12 @@ export const getUserAccounts = async () => {
 
   return json.userAccounts as User[];
 };
+
+export const getUserAccountDetails = async (id: number) => {
+  const res = await fetch(
+    process.env.NEXT_PUBLIC_API_URL + "getUserAccountDetails?id=" + id
+  );
+  const json = await res.json();
+
+  return json.userAccount as User;
+};
