@@ -17,8 +17,4 @@ model User {
   CheckingBalance Float
 }
 
-model Admin {
-  id       Int    @id @default(autoincrement())
-  Username String @unique
-  Password String
-}
+
