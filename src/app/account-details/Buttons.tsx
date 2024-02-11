@@ -8,6 +8,10 @@ import {
   transferToSavings,
 } from "../ClientApi/functions";
 
+interface UserWithError extends User {
+  error: string;
+}
+
 export const TransferButtons = ({
   userAccount,
   updateAccountDetails,
@@ -19,7 +23,10 @@ export const TransferButtons = ({
   const [showSavingsInput, setShowSavingsInput] = useState(false);
   const [checkingAmount, setCheckingAmount] = useState(100);
   const [savingsAmount, setSavingsAmount] = useState(100);
-  const [failed, setFailed] = useState(false);
+  const [checkingValidationMessage, setCheckingValidationMessage] =
+    useState(null);
+  const [savingsValidationMessage, setSavingsValidationMessage] =
+    useState(null);
 
   const onTransferToSavingsClick = async () => {
     const updatedUser = await transferToSavings({
@@ -30,9 +37,9 @@ export const TransferButtons = ({
     if (updatedUser.id) {
       updateAccountDetails(updatedUser);
       setShowCheckingInput(false);
-      setFailed(false);
+      setSavingsValidationMessage(null);
     } else {
-      setFailed(true);
+      setSavingsValidationMessage((updatedUser as UserWithError).error);
     }
   };
 
@@ -42,12 +49,12 @@ export const TransferButtons = ({
       amount: savingsAmount,
     });
 
-    if (updatedUser) {
+    if (updatedUser.id) {
       updateAccountDetails(updatedUser);
       setShowSavingsInput(false);
-      setFailed(false);
+      setCheckingValidationMessage(null);
     } else {
-      setFailed(true);
+      setCheckingValidationMessage((updatedUser as UserWithError).error);
     }
   };
 
@@ -55,7 +62,10 @@ export const TransferButtons = ({
     <div className="flex flex-col gap-4 mt-10 w-1/3">
       <button
         data-testid="transfer-to-savings-button"
-        onClick={() => setShowCheckingInput(!showCheckingInput)}
+        onClick={() => {
+          setShowCheckingInput(!showCheckingInput);
+          setSavingsValidationMessage(null);
+        }}
         className="bg-green-400 hover:bg-green-600 text-white font-bold py-2 px-4 rounded"
       >
         {showCheckingInput ? "Hide" : "Transfer to Savings"}
@@ -77,15 +87,16 @@ export const TransferButtons = ({
           >
             Ok
           </button>
-          {failed && (
-            <p className="text-red-300">
-              Something went wrong, please try again...
-            </p>
+          {savingsValidationMessage && (
+            <p className="text-red-300">{savingsValidationMessage} </p>
           )}
         </div>
       )}
       <button
-        onClick={() => setShowSavingsInput(!showSavingsInput)}
+        onClick={() => {
+          setShowSavingsInput(!showSavingsInput);
+          setCheckingValidationMessage(null);
+        }}
         className="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded"
         data-testid="transfer-to-checking-button"
       >
@@ -108,10 +119,8 @@ export const TransferButtons = ({
           >
             Ok
           </button>
-          {failed && (
-            <p className="text-red-300">
-              Something went wrong, please try again...
-            </p>
+          {checkingValidationMessage && (
+            <p className="text-red-300">{checkingValidationMessage}</p>
           )}
         </div>
       )}

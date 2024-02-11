@@ -32,7 +32,7 @@ export default async function handler(
       if (user.SavingsBalance < amount) {
         return res
           .status(400)
-          .json({ error: "Insufficient funds in Checking Account" });
+          .json({ error: "Insufficient funds in Savings Account" });
       }
 
       const updatedUser = await prisma.user.update({
