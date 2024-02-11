@@ -1,14 +1,14 @@
+import { User } from "@prisma/client";
 import { getUserAccounts } from "../ClientApi/functions";
 import { ManageButton } from "./ManageButton";
 
-export const AccountList = async () => {
-  const userAccounts = await getUserAccounts();
-
+export const AccountList = ({ accountList }: { accountList: User[] }) => {
   return (
-    <div className="flex flex-col gap-4">
-      {userAccounts.map((user, index) => (
+    <div className="flex flex-col gap-4" data-testid="account-list-container">
+      {accountList.map((user, index) => (
         <>
           <div
+            data-testid="account-list-item"
             key={index}
             className="flex justify-between bg-white w-full p-4 shadow-md rounded-lg border border-gray-200"
           >

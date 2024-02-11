@@ -1,12 +1,15 @@
-import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import AccountDetails from "../AccountDetails";
 import { getUserAccountDetails } from "@/app/ClientApi/functions";
+import { hasSession } from "../../../utils";
 
 const AccountDetailsPage = async ({ params }: { params: { id: number } }) => {
-  if (cookies().get("token")?.value !== process.env.MOCK_TOKEN) {
+  const isLoggedIn = hasSession();
+
+  if (!isLoggedIn) {
     redirect("login");
   }
+
   const accountDetails = await getUserAccountDetails(params.id);
   return <AccountDetails accountDetails={accountDetails} />;
 };

@@ -15,20 +15,22 @@ const AccountDetails = ({ accountDetails }: { accountDetails: User }) => {
   };
 
   return (
-    <div className="p-4">
+    <div className="p-4" data-testid="account-details-container">
       <h2 className="text-2xl font-bold mb-4">Account Details</h2>
       <div className="flex flex-col gap-5">
         <div className="flex justify-around items-start">
-          <p>
+          <p data-testid="account-details-name">
             <span className="font-bold">Name:</span> {userAccount.Name}
           </p>
-          <p>
+          <p data-testid="account-details-email">
+            {" "}
             <span className="font-bold">Email:</span> {userAccount.Email}
           </p>
         </div>
         <div className="flex justify-around">
           <div>
-            <p>
+            <p data-testid="account-details-savings">
+              {" "}
               <span className="font-bold">Savings Balance:</span> $
               {userAccount.SavingsBalance}
             </p>
@@ -38,7 +40,8 @@ const AccountDetails = ({ accountDetails }: { accountDetails: User }) => {
             />
           </div>
           <div>
-            <p>
+            <p data-testid="account-details-checking">
+              {" "}
               <span className="font-bold">Checking Balance:</span> $
               {userAccount.CheckingBalance}
             </p>

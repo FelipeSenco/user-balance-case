@@ -1,14 +1,19 @@
 import { FC } from "react";
 import { AccountList } from "./AccountList";
 import { redirect } from "next/navigation";
-import { cookies } from "next/headers";
+import { hasSession } from "../../utils";
+import { getUserAccounts } from "../ClientApi/functions";
 
 const AccountListPage: FC = async () => {
-  if (cookies().get("token")?.value !== process.env.MOCK_TOKEN) {
+  const isLoggedIn = hasSession();
+
+  if (!isLoggedIn) {
     redirect("login");
   }
 
-  return <AccountList />;
+  const accountList = await getUserAccounts();
+
+  return <AccountList accountList={accountList} />;
 };
 
 export default AccountListPage;
