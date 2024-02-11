@@ -29,8 +29,6 @@ async function main() {
       CheckingBalance: 3500.0,
     },
   });
-
-  console.log({ user1, user2, user3 });
 }
 
 main()

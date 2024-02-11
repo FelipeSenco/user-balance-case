@@ -1,4 +1,3 @@
-// pages/api/login.js
 import { PrismaClient } from "@prisma/client";
 import { NextApiRequest, NextApiResponse } from "next";
 

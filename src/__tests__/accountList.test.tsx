@@ -4,20 +4,17 @@ import "@testing-library/jest-dom";
 import { AccountList } from "@/app/account-list/AccountList";
 import { useRouter } from "next/navigation";
 
-// Mock useRouter
 jest.mock("next/navigation", () => ({
   useRouter: jest.fn(),
 }));
 
 const mockPush = jest.fn();
 
-// Setup mock for useRouter before each test
 beforeEach(() => {
   (useRouter as jest.Mock).mockReturnValue({
     push: mockPush,
     pathname: "/",
     query: {},
-    // add any other router properties/methods your component uses
   });
 });
 

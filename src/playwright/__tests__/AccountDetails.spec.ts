@@ -92,7 +92,7 @@ test.describe("Account Details page", () => {
     expect(newChecking).toBeDefined();
   });
 
-  test.only("Should transfer from savings to checking correctly", async ({
+  test("Should transfer from savings to checking correctly", async ({
     page,
   }) => {
     const transferAmount = "100";

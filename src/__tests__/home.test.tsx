@@ -6,7 +6,6 @@ import * as utils from "@/utils";
 
 const mockHasSession = jest.fn();
 
-// Use jest.spyOn to spy on the actual utils module and mock its implementation
 jest.spyOn(utils, "hasSession").mockImplementation(mockHasSession);
 
 describe("Home Component", () => {

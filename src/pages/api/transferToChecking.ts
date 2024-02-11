@@ -1,5 +1,3 @@
-// pages/api/transfer/[id].js
-
 import { PrismaClient } from "@prisma/client";
 import { NextApiRequest, NextApiResponse } from "next";
 
