@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "seed": "prisma db seed",
-    "jest-test": "jest",
+    "jest-test": "jest --coverage",
     "playwright-test": "playwright test"
   },
   "prisma": {

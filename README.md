@@ -1,36 +1,80 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# User Account Balance Demo
 
-## Getting Started
+## Description
 
-First, run the development server:
+The "User Account Balance Demo" is a web application built with React, TypeScript, and Next.js, utilizing SQLite for data storage. It simulates a banking interface where users can log in, view account balances, and perform transactions such as transfers between savings and checking accounts.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Technologies Used
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- React
+- TypeScript
+- Next.js
+- SQLite
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Prerequisites
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- Node.js version 18.18.0
+- npm version 9.8.1
 
-## Learn More
+## Installation
 
-To learn more about Next.js, take a look at the following resources:
+1. Clone the repository to your local machine.
+2. Navigate to the repository directory in your terminal.
+3. Run the following commands:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+   ```bash
+   npm install
+   npm run build
+   npm run start
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+4. The application will be running on [http://localhost:3000](http://localhost:3000).
 
-## Deploy on Vercel
+## Usage
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Visit [http://localhost:3000](http://localhost:3000) in your web browser.
+2. Click on the "Login" link and sign in using the mock credentials:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Username: `admin`
+- Password: `123`
+
+3. Once logged in, navigate to the "User Accounts" tab to view a list of accounts (if still redirects to login page, refresh the browser it should pick up the admin session).
+4. Click on the "Manage" button next to an account to view its details.
+5. In the account details page, you can:
+
+- Edit the currency amount for Savings and Checking accounts by clicking on the respective "Edit" button.
+- Transfer funds between Savings and Checking accounts using the "Transfer" buttons.
+
+## Running Tests
+
+### Jest Tests
+
+To run the Jest tests, follow these steps:
+
+1. Open your terminal.
+2. Navigate to the project directory.
+3. Run the command:
+
+   ```bash
+   npm run jest-test
+   ```
+
+Jest will execute the tests and include a test coverage report in the terminal results.
+
+### Playwright End-to-End Tests
+
+To run the Playwright end-to-end tests, perform the following steps:
+
+1. First, install the Playwright browsers by running:
+
+   ```bash
+   npx playwright install
+   ```
+
+2. Then, to execute the Playwright tests, run:
+
+   ```bash
+   npm run playwright-test
+   ```
+
+Playwright will open browser instances and run the end-to-end tests, allowing you to see the actions being performed in real-time.
