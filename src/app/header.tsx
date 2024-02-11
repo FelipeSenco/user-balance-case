@@ -9,6 +9,7 @@ const Header = () => {
             <span className={linkTextStyle}> Home</span>
           </Link>
           <Link
+            data-testid="account-list-button"
             href="/account-list"
             className={"hover:bg-blue-200 px-4 rounded"}
           >

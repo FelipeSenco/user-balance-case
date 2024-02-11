@@ -8,6 +8,7 @@ export const ManageButton = ({ id }: { id: number }) => {
   };
   return (
     <button
+      data-testid="manage-button"
       onClick={() => {
         onCardClick(id);
       }}

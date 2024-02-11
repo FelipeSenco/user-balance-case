@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "seed": "prisma db seed",
-    "jest-test": "jest"
+    "jest-test": "jest",
+    "playwright-test": "playwright test"
   },
   "prisma": {
     "seed": "node --loader ts-node/esm prisma/seed.ts"
@@ -24,6 +25,7 @@
     "react-query": "^3.39.3"
   },
   "devDependencies": {
+    "@playwright/test": "^1.41.2",
     "@testing-library/jest-dom": "^6.4.2",
     "@testing-library/react": "^14.2.1",
     "@types/cookie": "^0.6.0",

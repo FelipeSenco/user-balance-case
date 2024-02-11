@@ -54,6 +54,7 @@ export const TransferButtons = ({
   return (
     <div className="flex flex-col gap-4 mt-10 w-1/3">
       <button
+        data-testid="transfer-to-savings-button"
         onClick={() => setShowCheckingInput(!showCheckingInput)}
         className="bg-green-400 hover:bg-green-600 text-white font-bold py-2 px-4 rounded"
       >
@@ -62,6 +63,7 @@ export const TransferButtons = ({
       {showCheckingInput && (
         <div className="flex gap-5">
           <input
+            data-testid="transfer-to-savings-input"
             type="number"
             min={1}
             value={checkingAmount}
@@ -69,6 +71,7 @@ export const TransferButtons = ({
             className="border-2 border-gray-300 px-2 rounded"
           />
           <button
+            data-testid="transfer-to-savings-ok"
             onClick={onTransferToSavingsClick}
             className="bg-green-500 text-white font-semibold px-4 rounded hover:bg-green-700 transition duration-300"
           >
@@ -84,12 +87,14 @@ export const TransferButtons = ({
       <button
         onClick={() => setShowSavingsInput(!showSavingsInput)}
         className="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded"
+        data-testid="transfer-to-checking-button"
       >
         {showSavingsInput ? "Hide" : "Transfer to Checking"}
       </button>
       {showSavingsInput && (
         <div className="flex gap-5">
           <input
+            data-testid="transfer-to-checking-input"
             type="number"
             min={1}
             value={savingsAmount}
@@ -97,6 +102,7 @@ export const TransferButtons = ({
             className="border-2 border-gray-300 px-2 rounded"
           />
           <button
+            data-testid="transfer-to-checking-ok"
             onClick={onTransferToCheckingClick}
             className="bg-green-500 text-white font-semibold px-4 rounded hover:bg-green-700 transition duration-300"
           >
@@ -142,6 +148,7 @@ export const EditSavingsCurrencyAmount = ({
   return (
     <div className="flex items-start gap-1">
       <button
+        data-testid="edit-savings-currency-button"
         onClick={() => setShowInput(!showInput)}
         className="bg-blue-500 text-white font-semibold px-2 rounded hover:bg-blue-700 transition duration-300"
       >
@@ -150,6 +157,7 @@ export const EditSavingsCurrencyAmount = ({
       {showInput && (
         <>
           <input
+            data-testid="edit-savings-currency-input"
             type="number"
             min={1}
             value={amount}
@@ -157,6 +165,7 @@ export const EditSavingsCurrencyAmount = ({
             className="border-2 border-gray-300 px-2 rounded"
           />
           <button
+            data-testid="edit-savings-currency-ok"
             onClick={onOkClick}
             disabled={amount === userAccount.SavingsBalance}
             className="bg-green-500 text-white font-semibold px-4 rounded hover:bg-green-700 transition duration-300"
@@ -203,6 +212,7 @@ export const EditCheckingCurrencyAmount = ({
   return (
     <div className="flex items-start gap-1">
       <button
+        data-testid="edit-checking-currency-button"
         onClick={() => setShowInput(!showInput)}
         className="bg-blue-500 text-white font-semibold px-2 rounded hover:bg-blue-700 transition duration-300"
       >
@@ -216,8 +226,10 @@ export const EditCheckingCurrencyAmount = ({
             value={amount}
             onChange={(e) => setAmount(parseInt(e.target.value))}
             className="border-2 border-gray-300 px-2 rounded"
+            data-testid="edit-checking-currency-input"
           />
           <button
+            data-testid="edit-checking-currency-ok"
             onClick={onOkClick}
             disabled={amount === userAccount.CheckingBalance}
             className="bg-green-500 text-white font-semibold px-4 rounded hover:bg-green-700 transition duration-300"

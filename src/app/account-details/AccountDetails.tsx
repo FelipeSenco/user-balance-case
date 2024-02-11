@@ -23,16 +23,22 @@ const AccountDetails = ({ accountDetails }: { accountDetails: User }) => {
             <span className="font-bold">Name:</span> {userAccount.Name}
           </p>
           <p data-testid="account-details-email">
-            {" "}
             <span className="font-bold">Email:</span> {userAccount.Email}
           </p>
         </div>
         <div className="flex justify-around">
           <div>
             <p data-testid="account-details-savings">
-              {" "}
-              <span className="font-bold">Savings Balance:</span> $
-              {userAccount.SavingsBalance}
+              <span
+                data-testid="account-details-savings-text"
+                className="font-bold"
+              >
+                Savings Balance:
+              </span>{" "}
+              $
+              <span data-testid="account-details-savings-amount">
+                {userAccount.SavingsBalance}
+              </span>
             </p>
             <EditSavingsCurrencyAmount
               userAccount={userAccount}
@@ -41,9 +47,16 @@ const AccountDetails = ({ accountDetails }: { accountDetails: User }) => {
           </div>
           <div>
             <p data-testid="account-details-checking">
-              {" "}
-              <span className="font-bold">Checking Balance:</span> $
-              {userAccount.CheckingBalance}
+              <span
+                data-testid="account-details-checking-text"
+                className="font-bold"
+              >
+                Checking Balance:
+              </span>{" "}
+              $
+              <span data-testid="account-details-checking-amount">
+                {userAccount.CheckingBalance}
+              </span>
             </p>
             <EditCheckingCurrencyAmount
               userAccount={userAccount}

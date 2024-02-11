@@ -33,6 +33,7 @@ const LoginPage: FC = () => {
               </label>
               <input
                 required
+                data-testid="username-input"
                 type="text"
                 placeholder="Username"
                 onChange={(e) => setUsername(e.target.value)}
@@ -47,6 +48,7 @@ const LoginPage: FC = () => {
               </label>
               <input
                 required
+                data-testid="password-input"
                 type="password"
                 placeholder="Password"
                 onChange={(e) => setPassword(e.target.value)}
@@ -57,6 +59,7 @@ const LoginPage: FC = () => {
             </div>
             <div className="flex flex-col items-baseline justify-between">
               <button
+                data-testid="login-button"
                 type="submit"
                 className="px-6 py-2 mt-4 text-white bg-blue-600 rounded-lg hover:bg-blue-900"
               >
